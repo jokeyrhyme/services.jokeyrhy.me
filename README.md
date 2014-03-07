@@ -1,2 +1,3 @@
 # services.jokeyrhy.me
 
+When static GitHub Pages just aren't enough...

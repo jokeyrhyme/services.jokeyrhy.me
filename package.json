@@ -1,6 +1,7 @@
 {
   "name": "services.jokeyrhy.me",
   "version": "0.0.0",
+  "description": "When static GitHub Pages just aren't enough...",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
