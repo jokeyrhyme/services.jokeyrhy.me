@@ -18,5 +18,8 @@
   "homepage": "https://github.com/jokeyrhyme/services.jokeyrhy.me",
   "dependencies": {
     "hapi": "^2.6.0"
+  },
+  "engines": {
+    "node": "0.10.x"
   }
 }

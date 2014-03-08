@@ -5,7 +5,7 @@
 var Hapi = require('hapi');
 
 // Create a server with a host and port
-var server = Hapi.createServer('localhost', 8000);
+var server = Hapi.createServer('localhost', process.env.PORT || 8000);
 
 // Add the route
 server.route({
