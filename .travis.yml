@@ -1,0 +1,18 @@
+language: node_js
+
+node_js:
+  - '0.10'
+
+before_script:
+  - npm install -g grunt-cli
+
+script: ls -la
+
+deploy:
+  app: young-wildwood-4158
+  provider: heroku
+  on:
+    branch: master
+    node: 0.10
+  api_key:
+    secure: Qh5MGXd2tDR4gQ6hgI3iUWF40PiTp2kGw7S88Vy8IQXelE5bz/sAtC3HJUBW0PccE4bQ/GCfta8+Sdu9vQQEucJwRofyw3/6wxmgyaMuheWkegXFkHnxkvbPnF3cv/+kopABpWwniqztu9lO4PagPwDzNujFkBh5F4v4d62YR6k=

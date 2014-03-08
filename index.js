@@ -23,7 +23,7 @@ server.route({
   method: 'GET',
   path: '/hello',
   handler: function (request, reply) {
-    reply('hello world');
+    reply('hello world, auto-deployed!');
   }
 });
 
