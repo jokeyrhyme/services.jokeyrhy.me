@@ -2,10 +2,21 @@
 
 'use strict';
 
+// Node.JS' built-in modules
+
+var fs, path;
+fs = require('fs');
+path = require('path');
+
+// this module
+
 var Hapi = require('hapi');
 
+// create a Pack to put the Server in
+var pack = new Hapi.Pack();
+
 // Create a server with a host and port
-var server = Hapi.createServer('0.0.0.0', process.env.PORT || 8000, {
+var server = pack.server('0.0.0.0', process.env.PORT || 8000, {
   cors: {
     origin: [
       'http://jokeyrhy.me',
@@ -18,14 +29,32 @@ var server = Hapi.createServer('0.0.0.0', process.env.PORT || 8000, {
   }
 });
 
-// Add the route
-server.route({
-  method: 'GET',
-  path: '/hello',
-  handler: function (request, reply) {
-    reply('hello world, auto-deployed!');
-  }
-});
+var pluginPath;
+/*jslint nomen:true*/ // Node.JS' __dirname
+pluginPath = path.join(__dirname, 'plugins');
+/*jslint nomen:false*/
 
-// Start the server
-server.start();
+function pluginCallback(err) {
+  if (err) {
+    throw err;
+  }
+}
+
+// add all the modules in the plugins directory to this Pack
+fs.readdir(pluginPath, function (err, files) {
+  var f, file;
+  if (err) {
+    throw err;
+  }
+  f = files.length;
+  while (f > 0) {
+    f -= 1;
+    file = files[f];
+    if (/^\w+\.js$/.test(file)) {
+      pack.register(require(path.join(pluginPath, file)), {}, pluginCallback);
+    }
+  }
+
+  // Start the Pack of Servers
+  pack.start();
+});
