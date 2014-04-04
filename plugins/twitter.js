@@ -75,6 +75,11 @@ exports.name = 'twitter';
 exports.version = '0.0.0';
 
 exports.register = function (plugin, options, next) {
+  if (!process.env.TWITTER_KEY || !process.env.TWITTER_SECRET) {
+    next();
+    return;
+  }
+
   getBearerToken(function (token) {
     bearerToken = token;
   });
