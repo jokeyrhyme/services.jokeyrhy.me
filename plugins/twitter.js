@@ -37,14 +37,7 @@ function getBearerToken(callback) {
 }
 
 function getUserTimeline(options, callback) {
-  var defaults;
-  defaults = {
-    count: 200,
-    trim_user: true
-  };
   options = options || {};
-  options.count = options.count || defaults.counts;
-  options.trim_user = options.trim_user !== undefined ? options.trim_user : defaults.trim_user;
   request.get({
     url: 'https://api.twitter.com/1.1/statuses/user_timeline.json',
     qs: options,
@@ -94,11 +87,9 @@ exports.register = function (plugin, options, next) {
   });
   plugin.route({
     method: 'GET',
-    path: '/twitter/timeline/{user}',
+    path: '/twitter/1.1/statuses/user_timeline.json',
     handler: function (request, reply) {
-      getUserTimeline({
-        screen_name: request.params.user
-      }, function (timeline) {
+      getUserTimeline(request.query, function (timeline) {
         reply(JSON.stringify(timeline));
       });
     }
