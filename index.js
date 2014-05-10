@@ -2,6 +2,9 @@
 
 'use strict';
 
+// New Relic
+require('newrelic');
+
 // Node.JS' built-in modules
 
 var fs, path;
