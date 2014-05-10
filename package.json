@@ -17,9 +17,10 @@
   },
   "homepage": "https://github.com/jokeyrhyme/services.jokeyrhy.me",
   "dependencies": {
-    "hapi": "^2.6.0",
-    "request": "^2.34.0",
-    "ws": "^0.4.31"
+    "hapi": "~4.1.0",
+    "newrelic": "~1.5.4",
+    "request": "~2.34.0",
+    "ws": "~0.4.31"
   },
   "engines": {
     "node": "0.10.x"
