@@ -1,21 +1,23 @@
 language: node_js
 
 node_js:
-  - '0.10'
+- '0.10'
 
 before_script:
-  - npm install -g grunt-cli
+- npm install -g grunt-cli
 
 script: ls -la
 
 deploy:
-  app: young-wildwood-4158
   provider: heroku
   api_key:
-    secure: Qh5MGXd2tDR4gQ6hgI3iUWF40PiTp2kGw7S88Vy8IQXelE5bz/sAtC3HJUBW0PccE4bQ/GCfta8+Sdu9vQQEucJwRofyw3/6wxmgyaMuheWkegXFkHnxkvbPnF3cv/+kopABpWwniqztu9lO4PagPwDzNujFkBh5F4v4d62YR6k=
+    secure: BePDwofVlcb6hIZlgxyQFPYDtsx7JsCwmP3FyaCgJYm5sff0aJP+S6kvx5asO0VuIoIPk0XR13Keda5zPE4i1JG9Rud9PXCVoV/GPKjJ8puT4RBy7R03gHxf6uNWC6GfWIgi5sfxp0TY9GiyMy4q7iIOERbBSQV2uEonwGq1epc=
+  app: young-wildwood-4158
+  on:
+    repo: jokeyrhyme/services.jokeyrhy.me
 
 before_deploy:
-  - "echo 'about to deploy ...'"
+- echo 'about to deploy ...'
 
 after_deploy:
-  - "echo '... deploy finished!'"
+- echo '... deploy finished!'
